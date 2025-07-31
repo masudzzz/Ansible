@@ -1,0 +1,9 @@
+---
+- name: working with template
+  hosts: all
+  tasks:
+    - name: template file
+      ansible.builtin.template:
+        src: /home/admin/specs.j2
+        dest: /home/admin/specs_report.txt
+...

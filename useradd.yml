@@ -1,0 +1,11 @@
+---
+- name: This is first play
+  hosts: all
+
+  tasks: 
+  - name: useradd
+    ansible.builtin.user:
+      name: susan
+      state: present
+
+...

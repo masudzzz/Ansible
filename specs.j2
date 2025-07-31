@@ -1,0 +1,8 @@
+HOSTNAME= {{ ansible_hostname }} 
+OS= {{ ansible_distribution }} 
+BIOS VERSION= {{ ansible_bios_version }} 
+TOTAL MEMORY IN MB= {{ ansible_memtotal_mb }} 
+VDA DISK SIZE= {{ ansible_devices.vda.size | default('NONE') }} 
+VDB DISK SIZE= {{ ansible_devices.vdb.size | default('NONE') }} 
+Size of nvme= {{ ansible_facts['devices']['nvme0n1']['partitions']['nvme0n1p3']['size'] }}
+

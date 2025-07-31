@@ -1,0 +1,12 @@
+---
+- name: This is first play
+  hosts: all
+
+  tasks: 
+  - name: user remove
+    ansible.builtin.user:
+      name: susan
+      state: absent
+      remove: yes       # remove home directory of the user
+
+...

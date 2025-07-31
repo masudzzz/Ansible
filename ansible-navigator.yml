@@ -1,0 +1,21 @@
+---
+ansible-navigator:
+  ansible:
+    inventory:
+      entries:
+        - /home/admin/my_inventory/dev/linux
+
+  execution-environment:
+    image: ghcr.io/ansible/community-ansible-dev-tools
+    pull:
+      policy: missing
+
+  logging:
+    file: /dev/null
+
+  mode: stdout
+  
+  playbook-artifact:
+    enable: false
+
+...

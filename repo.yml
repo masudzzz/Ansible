@@ -1,0 +1,23 @@
+---
+- name: Repo 
+  hosts: all 
+  become: true 
+  tasks:
+    - name: Add Repo BaseOS 
+      yum_repository: 
+        name: BaseOS 
+        description: BaseOS 
+        baseurl: http://control.lab.com/dvd9/BaseOS/ 
+        gpgcheck: yes 
+        enabled: yes 
+        gpgkey: http://control.lab.com/dvd9/RPM-GPG-KEY-redhat-release 
+  
+    - name: Add Repo AppStrem 
+      yum_repository: 
+        name: AppStream 
+        description: AppStream 
+        baseurl: http://control.lab.com/dvd9/AppStream/ 
+        gpgcheck: yes 
+        enabled: yes 
+        gpgkey: http://control.lab.com/dvd9/RPM-GPG-KEY-redhat-release
+...

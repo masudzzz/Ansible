@@ -1,0 +1,9 @@
+---
+- name: motd file creation
+  hosts: all
+  tasks: 
+    - name: Coping the motd file from ansible server to managed hosts
+      template:
+        src: /home/admin/motd.j2
+        dest: /etc/motd
+...

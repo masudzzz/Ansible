@@ -1,0 +1,14 @@
+--- 
+- name: Ansible facts
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Display some facts
+      ansible.builtin.debug:
+        msg: | 
+          My hostname is : {{ ansible_facts['hostname'] }}
+          My fqdn is : {{ ansible_facts['fqdn'] }}
+          My ip address is : {{ ansible_facts['default_ipv4']['address'] }}
+          My operating system is: {{ ansible_facts['distribution'] }}
+          My inventory hostname is : {{ inventory_hostname }}
+...

@@ -1,0 +1,12 @@
+---
+- name: ping test
+  hosts: all
+  tasks: 
+    - name: ping all node
+      ansible.builtin.ping:
+      register: result
+    - name: result print
+      ansible.builtin.debug:
+        msg: "{{ result }}"
+
+...

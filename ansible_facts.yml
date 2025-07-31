@@ -1,0 +1,10 @@
+--- 
+- name: Working with ansible facts
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Capture the kernel version
+      ansible.builtin.copy:
+        content: "The available kernel version is {{ ansible_kernel }}"
+        dest: /home/admin/kernel_info.txt

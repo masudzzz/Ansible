@@ -1,0 +1,17 @@
+---
+- name: Example of ansible jinja2 template
+  hosts: all
+  vars:
+    fruits:
+      - apple
+      - banana
+      - mango
+      - berry
+      - cherry
+      - lichi
+  tasks: 
+    - name: jinja2 with loop 
+      ansible.builtin.template:
+        src: /home/admin/fruits.j2
+        dest: /home/admin/jinja_fruits.txt
+...

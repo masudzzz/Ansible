@@ -1,0 +1,10 @@
+---
+- name: Demo 
+  hosts: all
+  vars: 
+    a: Hello world
+  tasks: 
+    - name: print
+      debug: 
+        msg: "{{ a }}"
+...

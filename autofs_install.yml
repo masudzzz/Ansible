@@ -1,0 +1,18 @@
+---
+- name: Install and enable packages
+  hosts: node1
+  become: true
+
+  tasks: 
+   - name: install autofs 
+     ansible.builtin.dnf:
+       name: nginx
+       state: present 
+
+   - name: start and enable autofs
+     ansible.builtin.service: 
+       name: nginx
+       state: started
+       enabled: true
+
+...

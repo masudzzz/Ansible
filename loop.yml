@@ -1,0 +1,17 @@
+---
+- name: Loop examples
+  hosts: all
+  tasks: 
+    - name: Create new users
+      user: 
+        name: "{{ item.name }}"
+        uid: "{{ item.uid }}"
+        state: present
+      loop: 
+        - name: user1
+          uid: 1020
+        - name: user2
+          uid: 1030
+        - name: user3
+          uid: 1040
+...

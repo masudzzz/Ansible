@@ -1,0 +1,13 @@
+---
+- name: Ansible OS check 
+  hosts: all
+  tasks: 
+    - name: Checking whether OS is Fedora and print a message
+      shell: echo "This is a fedora machine."
+      when: ansible_distribution == "Fedora"
+   
+          
+    - name: Checking whether OS is RedHat and print a message
+      shell: echo "This is a RedHat machine."
+      when: ansible_distribution == "RedHat"
+...

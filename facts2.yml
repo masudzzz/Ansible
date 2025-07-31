@@ -1,0 +1,10 @@
+---
+- name: Ansible facts
+  hosts: node1
+  gather_facts: true
+  tasks:
+    - name: Gather subset facts
+      ansible.builtin.setup:
+        gather_subset:
+          - hardware
+...

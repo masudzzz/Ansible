@@ -1,0 +1,19 @@
+---
+- name: Working with condition
+  hosts: all
+  become: true
+
+  tasks: 
+    - name: Install httpd
+      ansible.builtin.dnf:
+        name: httpd
+        state: installed
+      when: ansible_distribution == 'Fedora'
+
+    - name: enabled and start httpd service
+      ansible.builtin.service:
+        name: httpd
+        state: started
+        enabled: yes
+
+...

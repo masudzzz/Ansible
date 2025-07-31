@@ -1,0 +1,46 @@
+- name: Task Control Playbook
+  hosts: webservers
+  gather_facts: true
+  tasks:
+
+    - name: Install multiple packages
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - php
+        - mariadb-server
+      notify: restart apache
+
+    - name: Simulate a task that may fail
+      ansible.builtin.command: /bin/false
+      ignore_errors: true
+
+    - name: Show disk usage
+      ansible.builtin.command: df -h /
+      register: disk_output
+
+    - name: Fail if disk is full
+      ansible.builtin.debug:
+        msg: "Disk is full!"
+      failed_when: "'100%' in disk_output.stdout"
+
+    - block:
+        - name: Try risky command
+          ansible.builtin.command: /bin/false
+      rescue:
+        - name: Notify rescue block
+          ansible.builtin.debug:
+            msg: "Error occurred, rescued."
+      always:
+        - name: Always block message
+          ansible.builtin.debug:
+            msg: "This runs no matter what."
+
+  handlers:
+    - name: restart apache
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+
